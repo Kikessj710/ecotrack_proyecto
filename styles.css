@@ -1,0 +1,206 @@
+/* ============================================
+   EcoTrack - Estilos Globales
+   Autor: Sandro
+   Descripcion: Variables de colores, fuente
+   Poppins y estilos base del sitio
+   ============================================ */
+
+/* ===== IMPORTAR FUENTE POPPINS DE GOOGLE ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* ===== VARIABLES GLOBALES DE COLOR ===== */
+:root {
+  --verde-bosque:       #1A5C2E;
+  --verde-medio:        #2D7D46;
+  --verde-claro:        #F0F7F2;
+  --gris-claro:         #F5F5F5;
+  --gris-oscuro:        #333333;
+  --resultado-verde:    #D4EDDA;
+  --resultado-amarillo: #FFF3CD;
+  --resultado-rojo:     #F8D7DA;
+}
+
+/* ===== ESTILOS BASE DEL BODY ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: var(--gris-oscuro);
+  background-color: var(--gris-claro);
+}
+
+/* ===== TÍTULOS ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: var(--verde-bosque);
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  background-color: var(--verde-bosque) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.navbar-brand {
+  color: white !important;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.nav-link {
+  color: white !important;
+  font-weight: 600;
+  margin: 0 5px;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #cce8d4 !important;
+}
+
+/* ===== BOTONES ===== */
+.btn-primary {
+  background-color: var(--verde-bosque);
+  border-color: var(--verde-bosque);
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 25px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--verde-medio);
+  border-color: var(--verde-medio);
+}
+
+.btn-outline-success {
+  color: var(--verde-bosque);
+  border-color: var(--verde-bosque);
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.btn-outline-success:hover {
+  background-color: var(--verde-bosque);
+  border-color: var(--verde-bosque);
+  color: white;
+}
+
+/* ===== TARJETAS ===== */
+.card {
+  border: 1px solid var(--verde-medio);
+  border-radius: 12px;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 6px 20px rgba(26, 92, 46, 0.2);
+  transform: translateY(-4px);
+}
+
+.card-title {
+  color: var(--verde-bosque);
+  font-weight: 700;
+}
+
+/* ===== SECCIONES ALTERNAS ===== */
+.seccion-alterna {
+  background-color: var(--verde-claro);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background-color: var(--verde-bosque);
+  color: white;
+  padding: 40px 0 20px 0;
+}
+
+footer h5 {
+  color: white;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+footer p,
+footer li {
+  color: #cce8d4;
+  font-size: 14px;
+}
+
+footer a {
+  color: #cce8d4;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: white;
+}
+
+footer hr {
+  border-color: var(--verde-medio);
+  margin: 20px 0;
+}
+
+.footer-copyright {
+  color: #aed6b8;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ===== RESULTADOS CALCULADORA ===== */
+.resultado-verde {
+  background-color: var(--resultado-verde);
+  border: 2px solid #28a745;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.resultado-amarillo {
+  background-color: var(--resultado-amarillo);
+  border: 2px solid #ffc107;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.resultado-rojo {
+  background-color: var(--resultado-rojo);
+  border: 2px solid #dc3545;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/* ===== BARRA DE PROGRESO ===== */
+.progress {
+  height: 25px;
+  border-radius: 12px;
+  background-color: #e9ecef;
+}
+
+.progress-bar {
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: width 1s ease-in-out;
+}
+
+/* ===== UTILIDADES EXTRA ===== */
+.text-verde {
+  color: var(--verde-bosque) !important;
+}
+
+.bg-verde-claro {
+  background-color: var(--verde-claro) !important;
+}
+
+.icono-grande {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
