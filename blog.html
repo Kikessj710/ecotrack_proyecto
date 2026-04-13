@@ -7,35 +7,32 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
-  
   <link rel="stylesheet" href="styles.css"/>
 
   <style>
-    /* Estilos exclusivos para blog.html */
+    /* ─── SCROLL SUAVE (Mejora la navegación al hacer clic) ─── */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ─── ESTILOS DE LA CABECERA Y TARJETAS ─── */
     .blog-header {
       background-color: var(--verde-bosque);
       padding: 80px 20px 60px;
       text-align: center;
+      color: white;
     }
     .blog-header h1 {
-      color: #ffffff;
-      font-size: 2.5rem;
       font-weight: 700;
+      font-size: 2.5rem;
       margin-bottom: 15px;
     }
-    .blog-header p {
-      color: rgba(255,255,255,0.85);
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
 
-    .blog-section {
+    .blog-cards-section {
       background-color: var(--gris-claro);
       padding: 70px 20px;
     }
     
-    /* Mismo estilo de tarjetas que en index.html pero adaptadas para blog */
     .blog-card {
       background-color: #ffffff;
       border: 1px solid var(--verde-medio);
@@ -48,30 +45,19 @@
     }
     .blog-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 20px rgba(26, 92, 46, 0.1); /* Sombra suave verde */
+      box-shadow: 0 10px 20px rgba(26, 92, 46, 0.1);
     }
-    
-    .blog-icon {
-      font-size: 2.5rem;
-      margin-bottom: 16px;
-    }
-    
     .blog-title {
       font-size: 1.3rem;
       font-weight: 700;
       color: var(--verde-bosque);
-      margin-bottom: 12px;
-      line-height: 1.3;
+      margin: 12px 0;
     }
-    
     .blog-excerpt {
-      font-size: 0.95rem;
       color: var(--gris-oscuro);
-      line-height: 1.6;
-      flex-grow: 1; /* Empuja el botón hacia abajo */
+      flex-grow: 1;
       margin-bottom: 24px;
     }
-    
     .btn-leer {
       background-color: var(--verde-bosque);
       color: #ffffff;
@@ -80,59 +66,146 @@
       border-radius: 8px;
       text-decoration: none;
       text-align: center;
-      transition: background-color 0.2s;
     }
     .btn-leer:hover {
       background-color: var(--verde-medio);
+      color: white;
+    }
+
+    /* ─── ESTILOS DE LOS ARTÍCULOS Y MENÚ LATERAL ─── */
+    .lectura-container {
+      padding: 60px 20px;
+    }
+    
+    .articulo-completo {
+      background-color: white;
+      border-left: 5px solid var(--verde-bosque);
+      padding: 40px;
+      margin-bottom: 60px;
+      border-radius: 0 16px 16px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    
+    .articulo-completo h2 {
+      color: var(--verde-bosque);
+      font-weight: 700;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    .articulo-completo h3 {
+      color: var(--verde-bosque);
+      font-weight: 700;
+      margin-top: 35px;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    
+    .articulo-completo p, .articulo-completo li {
+      color: var(--gris-oscuro);
+      line-height: 1.8;
+      margin-bottom: 15px;
+      font-size: 1.05rem;
+    }
+
+    .cita-destacada {
+      border-left: 5px solid var(--verde-medio);
+      padding-left: 20px;
+      margin: 30px 0;
+      font-weight: 600;
+      color: var(--gris-oscuro);
+      background-color: var(--verde-claro);
+      padding: 20px;
+      border-radius: 0 12px 12px 0;
+    }
+
+    /* Margen para que el navbar no tape los títulos */
+    .seccion-trackeable {
+      scroll-margin-top: 100px; 
+      padding-top: 20px; /* Ayuda a que el JS detecte mejor la separación */
+    }
+
+    /* Estilos del Menú Sticky */
+    .sticky-resumen {
+      position: sticky;
+      top: 100px;
+      z-index: 10;
+    }
+
+    .tarjeta-resumen {
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    .tarjeta-resumen h5 {
+      font-weight: 700;
+      color: var(--gris-oscuro);
+      margin-bottom: 20px;
+    }
+
+    .resumen-link {
+      display: block;
+      padding: 10px 16px;
+      color: var(--gris-oscuro);
+      text-decoration: none;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .resumen-link:hover {
+      background-color: var(--verde-claro);
+      color: var(--verde-bosque);
+    }
+
+    .resumen-link.activo {
+      background-color: var(--verde-bosque);
       color: #ffffff;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(26, 92, 46, 0.2);
     }
   </style>
 </head>
-<body>
+<body class="bg-light">
 
   <nav id="navbar-placeholder"></nav>
 
   <section class="blog-header">
     <div class="container">
-      <h1>EcoBlog</h1>
-      <p>
-        Aprende, infórmate y descubre la ciencia y los hábitos detrás de tu huella de carbono. 
-        Pequeñas lecturas para grandes cambios.
-      </p>
+      <h1 style="color: white;">EcoBlog</h1>
+      <p>Aprende, infórmate y descubre la ciencia detrás de tu huella de carbono.</p>
     </div>
   </section>
 
-  <section class="blog-section">
+  <section class="blog-cards-section">
     <div class="container">
       <div class="row g-4 justify-content-center">
         
         <div class="col-12 col-md-4">
           <div class="blog-card">
             <div class="blog-title">¿Qué es la huella de carbono?</div>
-            <div class="blog-excerpt">
-              Descubre qué significa realmente este concepto, cómo se mide a nivel global y por qué es el primer paso vital para entender nuestro impacto ambiental diario.
-            </div>
-            <a href="#" class="btn-leer">Leer artículo</a>
+            <div class="blog-excerpt">Descubre qué significa realmente este concepto y cómo se mide a nivel global.</div>
+            <a href="#art-huella" class="btn-leer">Leer artículo</a>
           </div>
         </div>
 
         <div class="col-12 col-md-4">
           <div class="blog-card">
-            <div class="blog-title">5 cambios que reducen tu CO₂ a la mitad</div>
-            <div class="blog-excerpt">
-              No necesitas cambiar toda tu vida de un día para otro. Conoce cinco ajustes prácticos en tu rutina que marcarán una diferencia masiva en tus emisiones.
-            </div>
-            <a href="#" class="btn-leer">Leer artículo</a>
+            <div class="blog-title">5 cambios que reducen tu CO₂</div>
+            <div class="blog-excerpt">Conoce ajustes prácticos en tu rutina que marcarán una diferencia masiva.</div>
+            <a href="#art-cambios" class="btn-leer">Leer artículo</a>
           </div>
         </div>
 
         <div class="col-12 col-md-4">
           <div class="blog-card">
             <div class="blog-title">El cambio climático en números</div>
-            <div class="blog-excerpt">
-              Una mirada directa a las estadísticas actuales. Comprende la gravedad de la situación a través de datos duros y por qué aún estamos a tiempo de actuar.
-            </div>
-            <a href="#" class="btn-leer">Leer artículo</a>
+            <div class="blog-excerpt">Comprende la gravedad de la situación a través de estadísticas actuales.</div>
+            <a href="#art-numeros" class="btn-leer">Leer artículo</a>
           </div>
         </div>
 
@@ -140,15 +213,158 @@
     </div>
   </section>
 
+  <div class="container lectura-container">
+    <div class="row position-relative">
+      
+      <div class="col-lg-8">
+        
+        <article class="articulo-completo">
+          <div id="art-huella" class="seccion-trackeable">
+            <h2>¿Qué es la huella de carbono?</h2>
+            <p>La huella de carbono mide todas las emisiones de gases de efecto invernadero GEI, directas e indirectas, resultantes del desarrollo de la actividad de una persona, una empresa o un país.</p>
+            <p>Desde la revolución industrial, el día a día de la actividad humana en toda su diversidad, implica el consumo de combustibles fósiles en mayor o menor grado. En consecuencia, se emiten gases de efecto invernadero (GEI) a la atmósfera que provocan el aumento del forzamiento radiativo total de la tierra. Esto supone el aumento de la temperatura de los climas terrestres, conocido como calentamiento global, el principal causante del Cambio Climático.</p>
+            
+            <div class="cita-destacada">
+              Dicho de otra forma, los GEI, cuya concentración ha aumentado notablemente en las últimas décadas, absorben parte del calor que llega del sol a la tierra causando el aumento de la temperatura del planeta.
+            </div>
+            
+            <p>Los gases de efecto invernadero principales son el dióxido de carbono, el metano, el óxido de nitrógeno, el vapor de agua y el ozono. Pero es el CO2 el que más contribuye al incremento del forzamiento radiativo y, además, deriva en gran medida de la actividad humana.</p>
+          </div>
+
+          <div id="sub-huella-concepto" class="seccion-trackeable">
+            <h3>La huella de carbono</h3>
+            <p>La huella de carbono es el conjunto de emisiones de GEI generadas directa e indirectamente por una persona, un grupo, una organización, una empresa, una región, o incluso un producto, un servicio, o un evento. Se mide en toneladas de carbono equivalente (t CO2e), ya que el CO2 es el más abundante y el que se usa como referencia.</p>
+            <p>Es decir, la huella de carbono es una importante métrica ambiental que da a conocer las fuentes y sumideros de emisiones de GEI y sirve como herramienta de gestión para conocer las acciones que contribuyen al aumento, o descenso del volumen de emisiones de GEI de nuestra actividad, directamente ligado con nuestro impacto en el cambio climático.</p>
+            <p>Hoy la urgencia climática ha puesto de manifiesto la necesidad de una transformación a nivel global, desde el individuo, como el tejido empresarial, hasta los gobiernos, con objeto de establecer un modelo económico que tenga en cuenta a las personas y el medio ambiente, sea sostenible en el tiempo y neutro en emisiones de GEI.</p>
+          </div>
+
+          <div id="sub-huella-individuo" class="seccion-trackeable">
+            <h3>La huella de carbono y el individuo</h3>
+            <p>Si pensamos a nivel de individuo, la huella de carbono sería el conjunto de emisiones de GEI que genera una persona en la actividad normal de su día a día, por ejemplo: utilizar energía en forma de electricidad o de calor, o por el consumo de combustibles al desplazarse, o derivada de los productos o servicios que consume, entre otras fuentes de emisión. La huella de carbono, por tanto, ayuda a las personas a identificar las acciones cotidianas que tienen potencial para reducir las emisiones de GEI y contribuir a la lucha contra el cambio climático.</p>
+            <p>Por eso la importancia de traer el tema del calentamiento global a la luz y de lanzar programas de concientización para que las personas puedan hacer elecciones diarias que sean menos dañinas al medio ambiente y a la sociedad como un todo.</p>
+          </div>
+          <a href="#" style="color: var(--verde-medio); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 20px;">↑ Volver arriba</a>
+        </article>
+
+        <article class="articulo-completo">
+          <div id="art-cambios" class="seccion-trackeable">
+            <h2>5 cambios que reducen tu CO₂ a la mitad</h2>
+            <p>¿Quieres saber qué puedes hacer para reducir las emisiones de dióxido de carbono (CO2) a la atmósfera? A continuación, te ofrecemos algunas recomendaciones que, con el esfuerzo de todos, pueden ayudar a mitigar los efectos del cambio climático en nuestro planeta.</p>
+          </div>
+          
+          <div id="cambio-1" class="seccion-trackeable">
+            <h3>1. Di no a la moda rápida</h3>
+            <p>La producción de bienes que consumimos —como ropa, productos electrónicos y muebles— tiene un costo de carbono oculto.</p>
+            <p>Moda rápida es particularmente perjudicial, ya que fomenta tendencias de corta duración y una rápida rotación de prendas de vestir, lo que genera mayores emisiones derivadas de la producción y eliminación.</p>
+            <p>Adoptar una mentalidad de comprando para mayor longevidad. Invierta en artículos de mayor calidad que duren más y trate de reducir, reutilizar, y reciclar productos cuando sea posible. Cada vez más marcas están adoptando una economía circular enfoque de la moda con marcas como Manténgase nadando salvajemente y Rapanui Proporcionar un enfoque más sostenible a la vestimenta.</p>
+          </div>
+
+          <div id="cambio-2" class="seccion-trackeable">
+            <h3>2. Plantar árboles</h3>
+            <p>Los árboles actúan como «sumideros de carbono», es decir, retienen el CO2. Por ello, apoyar medidas que eviten la deforestación de los bosques y los incendios forestales o impulsen la plantación de nuevos árboles, en especial de especies autóctonas, contribuye a reducir las emisiones de CO2 en la atmósfera. Los ciudadanos pueden participar en las cada vez más diversas iniciativas para plantar árboles. Sin duda una buena idea para contribuir a frenar el impacto ambiental del cambio climático.</p>
+          </div>
+
+          <div id="cambio-3" class="seccion-trackeable">
+            <h3>3. Apoyar productos locales y sostenibles</h3>
+            <p>El transporte de mercancías contribuye a las emisiones de carbono. Al comprar productos locales, especialmente alimentos, puede reducir las emisiones asociadas con el envío y el embalaje. Además, elegir productos fabricados con materiales sostenibles o por empresas con prácticas ecológicas reduce aún más su huella de carbono.</p>
+          </div>
+
+          <div id="cambio-4" class="seccion-trackeable">
+            <h3>4. Practicar una movilidad sostenible</h3>
+            <p>Si hay una industria que conoce bien impacto ambiental del cambio climático, esa es la industria de automoción. Por esta razón, los grandes fabricantes presentan cada año alternativas verdes al coche convencional (híbridos y eléctricos). Pero si esta no es una opción para ti, piensa en usar el transporte público y exigir que haya más y que sea más ecológico. Siempre que sea posible, es preferible ir a pie o en bicicleta en todos los desplazamientos, tanto de ocio como para ir al trabajo. Puedes incluso aprovecharte de la opción del no desplazamiento que permite el teletrabajo.</p>
+          </div>
+
+          <div id="cambio-5" class="seccion-trackeable">
+            <h3>5. Reduce tu consumo de energía en casa</h3>
+            <p>Algo que todos podemos hacer hoy es realizar pequeños cambios en los hábitos diarios. Estos pequeños cambios también pueden conducir a reducciones significativas en el uso de energía a lo largo del tiempo. A continuación se muestran algunas formas sencillas de reducir el consumo de energía de su hogar:</p>
+            <ul>
+              <li><strong>Cambiar a iluminación LED:</strong> Las bombillas LED consumen hasta 75% menos de energía que las bombillas incandescentes tradicionales.</li>
+              <li><strong>Desconecte los electrodomésticos:</strong> Los dispositivos que se dejan en modo de espera aún consumen energía y Puede representar entre el 5 y el 10% del consumo de electricidad del hogar, por lo que desconectarlos puede ahorrar energía.</li>
+            </ul>
+          </div>
+          
+          <a href="#" style="color: var(--verde-medio); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 20px;">↑ Volver arriba</a>
+        </article>
+
+        <article class="articulo-completo">
+          <div id="art-numeros" class="seccion-trackeable">
+            <h2>El cambio climático en números</h2>
+            <p>Una mirada directa a las estadísticas actuales para comprender la urgencia:</p>
+            <ul>
+              <li><strong>1.2°C:</strong> Aumento de la temperatura global en comparación con niveles preindustriales.</li>
+              <li><strong>4 toneladas:</strong> Promedio mundial de huella de carbono por persona al año.</li>
+              <li><strong>24%:</strong> Porcentaje de emisiones globales provenientes del transporte.</li>
+              <li><strong>50%:</strong> Reducción de emisiones necesaria para 2030 si queremos evitar las peores consecuencias.</li>
+            </ul>
+          </div>
+          <a href="#" style="color: var(--verde-medio); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 20px;">↑ Volver arriba</a>
+        </article>
+
+      </div>
+
+      <div class="col-lg-4 d-none d-lg-block">
+        <div class="sticky-resumen">
+          <div class="tarjeta-resumen">
+            <h5>Contenido:</h5>
+            <nav id="menu-resumen">
+              <a href="#art-huella" class="resumen-link activo">¿Qué es la huella de carbono?</a>
+              <a href="#sub-huella-concepto" class="resumen-link ms-3" style="font-size: 0.85rem;">- La huella de carbono</a>
+              <a href="#sub-huella-individuo" class="resumen-link ms-3" style="font-size: 0.85rem;">- El individuo</a>
+              
+              <a href="#art-cambios" class="resumen-link mt-2">5 cambios que reducen tu CO₂</a>
+              <a href="#cambio-1" class="resumen-link ms-3" style="font-size: 0.85rem;">1. Moda rápida</a>
+              <a href="#cambio-2" class="resumen-link ms-3" style="font-size: 0.85rem;">2. Plantar árboles</a>
+              <a href="#cambio-3" class="resumen-link ms-3" style="font-size: 0.85rem;">3. Productos locales</a>
+              <a href="#cambio-4" class="resumen-link ms-3" style="font-size: 0.85rem;">4. Movilidad sostenible</a>
+              <a href="#cambio-5" class="resumen-link ms-3" style="font-size: 0.85rem;">5. Consumo de energía</a>
+
+              <a href="#art-numeros" class="resumen-link mt-2">El cambio climático en números</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
   <script>
+    // Carga dinámica del Navbar
     fetch('navbar.html')
       .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      })
-      .catch(error => console.log('Error al cargar el navbar:', error));
+      .then(data => { document.getElementById('navbar-placeholder').innerHTML = data; })
+      .catch(error => console.log('Error:', error));
+
+    // Lógica del Scrollspy Mejorada (Posiciones Absolutas)
+    document.addEventListener("DOMContentLoaded", function() {
+      const secciones = document.querySelectorAll(".seccion-trackeable");
+      const enlacesMenu = document.querySelectorAll("#menu-resumen .resumen-link");
+
+      window.addEventListener("scroll", () => {
+        let idActual = "";
+        
+        // Obtenemos la posición del scroll actual
+        const scrollPosition = window.scrollY;
+
+        secciones.forEach(seccion => {
+          // getBoundingClientRect().top + scrollY nos da la posición exacta en el documento
+          const seccionTop = seccion.getBoundingClientRect().top + scrollPosition;
+          
+          // Si el scroll bajó lo suficiente para alcanzar la sección (con margen de 150px)
+          if (scrollPosition >= (seccionTop - 150)) {
+            idActual = seccion.getAttribute("id");
+          }
+        });
+
+        // Actualiza las clases CSS del menú
+        enlacesMenu.forEach(enlace => {
+          enlace.classList.remove("activo");
+          if (idActual && enlace.getAttribute("href") === "#" + idActual) {
+            enlace.classList.add("activo");
+          }
+        });
+      });
+    });
   </script>
 
 </body>
