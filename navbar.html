@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoTrack</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    * { font-family: 'Poppins', sans-serif; }
+
+    /* ── NAVBAR USANDO VARIABLES DE styles.css ── */
+    .navbar {
+      background-color: var(--verde-bosque) !important;
+      padding: 14px 24px;
+    }
+    .navbar-brand {
+      color: #ffffff !important;
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .navbar-brand .hoja {
+      width: 20px;
+      height: 20px;
+      background-color: var(--verde-medio);
+      border-radius: 50% 0 50% 0;
+      display: inline-block;
+    }
+    .navbar-toggler {
+      border-color: rgba(255,255,255,0.4);
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    .navbar-nav .nav-link {
+      color: rgba(255,255,255,0.75) !important;
+      font-size: 0.9rem;
+      font-weight: 400;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #ffffff !important;
+      background-color: rgba(255,255,255,0.1);
+    }
+    .navbar-nav .nav-link.active {
+      color: #ffffff !important;
+      font-weight: 600;
+    }
+    .btn-nav {
+      background-color: #ffffff;
+      color: var(--verde-bosque) !important;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 8px 20px;
+      border-radius: 8px;
+      transition: background-color 0.2s;
+    }
+    .btn-nav:hover {
+      background-color: var(--verde-claro) !important;
+      color: var(--verde-bosque) !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- NAVBAR RESPONSIVO CONECTADO A styles.css   -->
+  <!-- ══════════════════════════════════════════ -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.html">
+        <span class="hoja"></span>
+        EcoTrack
+      </a>
+
+      <!-- Boton hamburguesa (celular) -->
+      <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarMenu"
+        aria-controls="navbarMenu"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="calculadora.html">Calculadora</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tips.html">Tips</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="blog.html">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="nosotros.html">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contacto.html">Contacto</a>
+          </li>
+        </ul>
+
+        <!-- Boton CTA -->
+        <a href="calculadora.html" class="nav-link btn-nav ms-2">
+          Calcula tu huella
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
