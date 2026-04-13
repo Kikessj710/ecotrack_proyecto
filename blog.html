@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog - EcoTrack</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  
+  <link rel="stylesheet" href="styles.css"/>
+
+  <style>
+    /* Estilos exclusivos para blog.html */
+    .blog-header {
+      background-color: var(--verde-bosque);
+      padding: 80px 20px 60px;
+      text-align: center;
+    }
+    .blog-header h1 {
+      color: #ffffff;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    .blog-header p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .blog-section {
+      background-color: var(--gris-claro);
+      padding: 70px 20px;
+    }
+    
+    /* Mismo estilo de tarjetas que en index.html pero adaptadas para blog */
+    .blog-card {
+      background-color: #ffffff;
+      border: 1px solid var(--verde-medio);
+      border-radius: 16px;
+      padding: 30px 24px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(26, 92, 46, 0.1); /* Sombra suave verde */
+    }
+    
+    .blog-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    
+    .blog-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--verde-bosque);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    
+    .blog-excerpt {
+      font-size: 0.95rem;
+      color: var(--gris-oscuro);
+      line-height: 1.6;
+      flex-grow: 1; /* Empuja el botón hacia abajo */
+      margin-bottom: 24px;
+    }
+    
+    .btn-leer {
+      background-color: var(--verde-bosque);
+      color: #ffffff;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      text-align: center;
+      transition: background-color 0.2s;
+    }
+    .btn-leer:hover {
+      background-color: var(--verde-medio);
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar-placeholder"></nav>
+
+  <section class="blog-header">
+    <div class="container">
+      <h1>EcoBlog</h1>
+      <p>
+        Aprende, infórmate y descubre la ciencia y los hábitos detrás de tu huella de carbono. 
+        Pequeñas lecturas para grandes cambios.
+      </p>
+    </div>
+  </section>
+
+  <section class="blog-section">
+    <div class="container">
+      <div class="row g-4 justify-content-center">
+        
+        <div class="col-12 col-md-4">
+          <div class="blog-card">
+            <div class="blog-title">¿Qué es la huella de carbono?</div>
+            <div class="blog-excerpt">
+              Descubre qué significa realmente este concepto, cómo se mide a nivel global y por qué es el primer paso vital para entender nuestro impacto ambiental diario.
+            </div>
+            <a href="#" class="btn-leer">Leer artículo</a>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <div class="blog-card">
+            <div class="blog-title">5 cambios que reducen tu CO₂ a la mitad</div>
+            <div class="blog-excerpt">
+              No necesitas cambiar toda tu vida de un día para otro. Conoce cinco ajustes prácticos en tu rutina que marcarán una diferencia masiva en tus emisiones.
+            </div>
+            <a href="#" class="btn-leer">Leer artículo</a>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <div class="blog-card">
+            <div class="blog-title">El cambio climático en números</div>
+            <div class="blog-excerpt">
+              Una mirada directa a las estadísticas actuales. Comprende la gravedad de la situación a través de datos duros y por qué aún estamos a tiempo de actuar.
+            </div>
+            <a href="#" class="btn-leer">Leer artículo</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.log('Error al cargar el navbar:', error));
+  </script>
+
+</body>
+</html>
