@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoTrack - Conoce tu impacto en el planeta</title>
+  
+  <!-- SOLO TU CSS GLOBAL -->
+  <link rel="stylesheet" href="styles.css"/>
+
+  <style>
+    /* Estilos exclusivos para index.html */
+    .hero-section {
+      background-color: var(--verde-bosque);
+      padding: 100px 20px 80px;
+      text-align: center;
+    }
+    .hero-section h1 {
+      color: #ffffff;
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .hero-section p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.1rem;
+      max-width: 550px;
+      margin: 0 auto 36px;
+    }
+    .btn-hero {
+      background-color: #ffffff;
+      color: var(--verde-bosque);
+      font-weight: 700;
+      padding: 14px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-hero:hover {
+      background-color: var(--verde-claro);
+      color: var(--verde-bosque);
+    }
+
+    .stats-section {
+      background-color: var(--gris-claro);
+      padding: 70px 20px;
+    }
+    .stats-section h2 {
+      text-align: center;
+      color: var(--verde-bosque);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .stats-section .subtitulo {
+      text-align: center;
+      color: #666;
+      margin-bottom: 48px;
+    }
+    .stat-card {
+      background-color: #ffffff;
+      border: 1px solid var(--verde-medio);
+      border-radius: 16px;
+      padding: 36px 20px;
+      text-align: center;
+      height: 100%;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+    }
+    .stat-card .icono {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    .stat-card .numero {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--verde-bosque);
+      margin-bottom: 10px;
+    }
+    .stat-card .descripcion {
+      font-size: 0.9rem;
+      color: var(--gris-oscuro);
+      line-height: 1.6;
+    }
+
+    .cta-section {
+      background-color: var(--verde-medio);
+      padding: 70px 20px;
+      text-align: center;
+    }
+    .cta-section h2 {
+      color: #ffffff;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .cta-section p {
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 32px;
+    }
+    .btn-cta {
+      background-color: #ffffff;
+      color: var(--verde-medio);
+      font-weight: 700;
+      padding: 14px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-cta:hover {
+      background-color: var(--verde-claro);
+      color: var(--verde-medio);
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar-placeholder"></nav>
+
+  <section class="hero-section">
+    <div class="container">
+      <h1>Conoce tu impacto<br>en el planeta</h1>
+      <p>
+        Descubre cuántas toneladas de CO₂ generas al año y aprende
+        cómo reducirlas con pequeños cambios en tu vida diaria.
+      </p>
+      <a href="calculadora.html" class="btn-hero">
+        🌱 Calcula tu huella
+      </a>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="container">
+      <h2>¿Por qué importa?</h2>
+      <p class="subtitulo">Estos números explican por qué EcoTrack existe</p>
+
+      <div class="row g-4 justify-content-center">
+        <div class="col-12 col-md-4">
+          <div class="stat-card">
+            <div class="icono">🚗</div>
+            <div class="numero">24%</div>
+            <div class="descripcion">
+              del CO₂ mundial es generado por el transporte.
+              Cada kilómetro en auto suma a tu huella.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <div class="stat-card">
+            <div class="icono">🌍</div>
+            <div class="numero">4 ton</div>
+            <div class="descripcion">
+              es el promedio de huella de carbono por persona
+              al año en el mundo. ¿Sabes cuál es la tuya?
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <div class="stat-card">
+            <div class="icono">🌱</div>
+            <div class="numero">50%</div>
+            <div class="descripcion">
+              de tu huella se puede reducir cambiando hábitos
+              simples como alimentación y transporte.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>¿Listo para conocer tu huella?</h2>
+      <p>Solo toma 2 minutos. Responde 4 preguntas y obtén tu resultado.</p>
+      <a href="calculadora.html" class="btn-cta">
+        Comenzar ahora
+      </a>
+    </div>
+  </section>
+
+</body>
+</html>
