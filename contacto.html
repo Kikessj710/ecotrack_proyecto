@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacto - EcoTrack</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+
+  <style>
+    .contacto-header {
+      background-color: var(--verde-bosque);
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .contacto-header h1 {
+      color: #ffffff;
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+    .contacto-header p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .contacto-section {
+      padding: 60px 20px;
+      background-color: var(--gris-claro);
+    }
+
+    .contacto-form-card {
+      background-color: #ffffff;
+      border: 1px solid var(--verde-medio);
+      border-radius: 16px;
+      padding: 40px 30px;
+    }
+
+    .contacto-form-card .form-label {
+      font-weight: 600;
+      color: var(--verde-bosque);
+      font-size: 0.9rem;
+    }
+
+    .contacto-form-card .form-control,
+    .contacto-form-card .form-select {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.95rem;
+      transition: border-color 0.3s;
+    }
+
+    .contacto-form-card .form-control:focus,
+    .contacto-form-card .form-select:focus {
+      border-color: var(--verde-medio);
+      box-shadow: 0 0 0 0.2rem rgba(45, 125, 70, 0.2);
+    }
+
+    .btn-enviar {
+      background-color: var(--verde-bosque);
+      color: #ffffff;
+      font-weight: 700;
+      padding: 12px 36px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+
+    .btn-enviar:hover {
+      background-color: var(--verde-medio);
+      color: #ffffff;
+    }
+
+    .info-card {
+      background-color: #ffffff;
+      border: 1px solid var(--verde-medio);
+      border-radius: 16px;
+      padding: 24px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(26, 92, 46, 0.15);
+    }
+
+    .info-card .icono-contacto {
+      width: 50px;
+      height: 50px;
+      background-color: var(--verde-claro);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .info-card h6 {
+      font-weight: 700;
+      color: var(--verde-bosque);
+      margin-bottom: 2px;
+      font-size: 0.95rem;
+    }
+
+    .info-card p {
+      color: var(--gris-oscuro);
+      margin-bottom: 0;
+      font-size: 0.85rem;
+    }
+
+    .alerta-exito {
+      background-color: var(--resultado-verde);
+      border: 2px solid #28a745;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      display: none;
+    }
+
+    .alerta-exito h5 {
+      color: #155724;
+      font-weight: 700;
+    }
+
+    .alerta-exito p {
+      color: #155724;
+      margin-bottom: 0;
+    }
+
+    .error-msg {
+      color: #dc3545;
+      font-size: 0.8rem;
+      display: none;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav id="navbar-placeholder"></nav>
+
+  <!-- Header -->
+  <section class="contacto-header">
+    <div class="container">
+      <h1>Contáctanos</h1>
+      <p>¿Tienes preguntas sobre tu huella de carbono o sobre EcoTrack? Escríbenos y te responderemos pronto.</p>
+    </div>
+  </section>
+
+  <!-- Formulario y datos de contacto -->
+  <section class="contacto-section">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- Formulario -->
+        <div class="col-lg-7">
+          <div class="contacto-form-card">
+            <h3 class="mb-4">Envíanos un mensaje</h3>
+
+            <form id="contacto-form" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="nombre" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" required>
+                  <span class="error-msg" id="error-nombre">Por favor ingresa tu nombre</span>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="correo" class="form-label">Correo electrónico</label>
+                  <input type="email" class="form-control" id="correo" placeholder="tu@correo.com" required>
+                  <span class="error-msg" id="error-correo">Ingresa un correo válido</span>
+                </div>
+
+                <div class="col-12">
+                  <label for="asunto" class="form-label">Asunto</label>
+                  <select class="form-select" id="asunto" required>
+                    <option value="" selected disabled>Selecciona un asunto</option>
+                    <option value="consulta">Consulta general</option>
+                    <option value="calculadora">Sobre la calculadora</option>
+                    <option value="sugerencia">Sugerencia</option>
+                    <option value="reporte">Reportar un problema</option>
+                    <option value="otro">Otro</option>
+                  </select>
+                  <span class="error-msg" id="error-asunto">Selecciona un asunto</span>
+                </div>
+
+                <div class="col-12">
+                  <label for="mensaje" class="form-label">Mensaje</label>
+                  <textarea class="form-control" id="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                  <span class="error-msg" id="error-mensaje">El mensaje debe tener al menos 10 caracteres</span>
+                </div>
+
+                <div class="col-12">
+                  <button type="submit" class="btn-enviar" id="btn-enviar">
+                    🌱 Enviar mensaje
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <!-- Mensaje de éxito -->
+            <div class="alerta-exito mt-4" id="alerta-exito">
+              <h5>¡Mensaje enviado con éxito! ✅</h5>
+              <p>Gracias por contactarnos. Te responderemos lo antes posible.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Información de contacto -->
+        <div class="col-lg-5">
+          <h3 class="mb-4">Información de contacto</h3>
+
+          <div class="info-card">
+            <div class="icono-contacto">📍</div>
+            <div>
+              <h6>Dirección</h6>
+              <p>Av. Los Chasquis y Río Payamino, Ambato, Ecuador</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="icono-contacto">📧</div>
+            <div>
+              <h6>Correo electrónico</h6>
+              <p>contacto@ecotrack.ec</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="icono-contacto">📞</div>
+            <div>
+              <h6>Teléfono</h6>
+              <p>+593 3 2XX XXXX</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="icono-contacto">🕐</div>
+            <div>
+              <h6>Horario de atención</h6>
+              <p>Lunes a Viernes: 9:00 - 18:00</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="icono-contacto">🌐</div>
+            <div>
+              <h6>Redes sociales</h6>
+              <p>@ecotrack.ec en todas las plataformas</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Cargar navbar
+    fetch('navbar.html')
+      .then(r => r.text())
+      .then(d => document.getElementById('navbar-placeholder').innerHTML = d)
+      .catch(e => console.log('Error navbar:', e));
+
+    // Cargar footer
+    fetch('footer.html')
+      .then(r => r.text())
+      .then(d => document.getElementById('footer-placeholder').innerHTML = d)
+      .catch(e => console.log('Error footer:', e));
+
+    // ============================================
+    // VALIDACIÓN DEL FORMULARIO DE CONTACTO
+    // ============================================
+    const form = document.getElementById('contacto-form');
+    const alertaExito = document.getElementById('alerta-exito');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valido = true;
+
+      // Validar nombre
+      const nombre = document.getElementById('nombre');
+      const errorNombre = document.getElementById('error-nombre');
+      if (nombre.value.trim().length < 2) {
+        errorNombre.style.display = 'block';
+        nombre.style.borderColor = '#dc3545';
+        valido = false;
+      } else {
+        errorNombre.style.display = 'none';
+        nombre.style.borderColor = '#28a745';
+      }
+
+      // Validar correo
+      const correo = document.getElementById('correo');
+      const errorCorreo = document.getElementById('error-correo');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(correo.value.trim())) {
+        errorCorreo.style.display = 'block';
+        correo.style.borderColor = '#dc3545';
+        valido = false;
+      } else {
+        errorCorreo.style.display = 'none';
+        correo.style.borderColor = '#28a745';
+      }
+
+      // Validar asunto
+      const asunto = document.getElementById('asunto');
+      const errorAsunto = document.getElementById('error-asunto');
+      if (asunto.value === '' || asunto.value === null) {
+        errorAsunto.style.display = 'block';
+        asunto.style.borderColor = '#dc3545';
+        valido = false;
+      } else {
+        errorAsunto.style.display = 'none';
+        asunto.style.borderColor = '#28a745';
+      }
+
+      // Validar mensaje
+      const mensaje = document.getElementById('mensaje');
+      const errorMensaje = document.getElementById('error-mensaje');
+      if (mensaje.value.trim().length < 10) {
+        errorMensaje.style.display = 'block';
+        mensaje.style.borderColor = '#dc3545';
+        valido = false;
+      } else {
+        errorMensaje.style.display = 'none';
+        mensaje.style.borderColor = '#28a745';
+      }
+
+      // Si todo es válido
+      if (valido) {
+        form.style.display = 'none';
+        alertaExito.style.display = 'block';
+      }
+    });
+
+    // Quitar error al escribir
+    document.querySelectorAll('.form-control, .form-select').forEach(input => {
+      input.addEventListener('input', function() {
+        this.style.borderColor = '#ccc';
+        const errorEl = document.getElementById('error-' + this.id);
+        if (errorEl) errorEl.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
