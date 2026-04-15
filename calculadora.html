@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTrack - Calculadora</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<section id="seccion-formulario" class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7 p-0 shadow-lg" style="border-radius: 16px; overflow: hidden; background: #fff;">
+            
+            <div class="py-4 px-4 d-flex justify-content-between align-items-center" style="background-color: var(--verde-bosque); border-radius: 16px 16px 0 0;">
+    <div class="text-start">
+        <h2 class="text-white fw-bold m-0" style="font-size: 22px;">EcoTrack</h2>
+        <p style="color: #cce8d4; font-size: 13px; margin: 0;">Calculadora de Huella</p>
+    </div>
+    <a href="index.html" class="btn btn-sm btn-outline-light" style="border-radius: 20px; font-size: 12px; padding: 5px 15px;">
+        <i class="bi bi-arrow-left"></i> Inicio
+    </a>
+</div>
+
+            <div class="px-4 py-4">
+                <form id="form-huella">
+                    <div class="q-block py-3 border-bottom">
+                        <label class="form-label d-flex align-items-center gap-2 mb-3">
+                            <span class="num-badge" style="background: var(--verde-bosque); color: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px;">1</span>
+                            <span class="fw-medium">¿Cuántos km viajas al día en auto o moto?</span>
+                        </label>
+                        <div class="d-flex align-items-center gap-3">
+                            <input type="range" class="form-range flex-grow-1" id="km" min="0" max="150" value="0" 
+                                   oninput="document.getElementById('km-val').innerText = this.value + ' km'">
+                            <span class="badge bg-verde-claro text-verde p-2" id="km-val" style="min-width: 70px;">0 km</span>
+                        </div>
+                    </div>
+
+                    <div class="q-block py-3 border-bottom">
+                        <label class="form-label d-flex align-items-center gap-2 mb-3">
+                            <span class="num-badge" style="background: var(--verde-bosque); color: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px;">2</span>
+                            <span class="fw-medium">¿Con qué frecuencia comes carne roja?</span>
+                        </label>
+                        <select class="form-select" id="carne">
+                            <option value="2.5">Todos los días</option>
+                            <option value="1.5">3 veces por semana</option>
+                            <option value="0.5">Casi nunca</option>
+                            <option value="0">Nunca</option>
+                        </select>
+                    </div>
+
+                    <div class="q-block py-3 border-bottom">
+                        <label class="form-label d-flex align-items-center gap-2 mb-3">
+                            <span class="num-badge" style="background: var(--verde-bosque); color: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px;">3</span>
+                            <span class="fw-medium">¿Cuántas horas de avión viajas al año?</span>
+                        </label>
+                        <div class="d-flex align-items-center gap-3">
+                            <input type="range" class="form-range flex-grow-1" id="vuelos" min="0" max="100" value="0" 
+                                   oninput="document.getElementById('vuelos-val').innerText = this.value + ' h'">
+                            <span class="badge bg-verde-claro text-verde p-2" id="vuelos-val" style="min-width: 70px;">0 h</span>
+                        </div>
+                    </div>
+
+                    <div class="q-block py-3 border-bottom">
+                        <label class="form-label d-flex align-items-center gap-2 mb-3">
+                            <span class="num-badge" style="background: var(--verde-bosque); color: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px;">4</span>
+                            <span class="fw-medium">¿Cuántas horas al día usas electrodomésticos?</span>
+                        </label>
+                        <div class="d-flex align-items-center gap-3">
+                            <input type="range" class="form-range flex-grow-1" id="electro" min="0" max="24" value="0" 
+                                   oninput="document.getElementById('electro-val').innerText = this.value + ' h'">
+                            <span class="badge bg-verde-claro text-verde p-2" id="electro-val" style="min-width: 70px;">0 h</span>
+                        </div>
+                    </div>
+                    <div id="error-validacion" class="text-danger small fw-bold mb-3 d-none">
+                    <i class="bi bi-exclamation-triangle-fill"></i> 
+                    Por favor, ajusta los sliders para reflejar tu estilo de vida antes de continuar.
+                </div>
+                    <button type="button" id="btn-calcular" class="btn btn-primary w-100 py-3 mt-4 shadow fw-bold">
+                        CALCULAR MI HUELLA
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="pantalla-resultado" class="container d-none mt-3 pb-5">
+    <div class="row justify-content-center">
+        <div id="contenedor-clase-sandro" class="col-md-7 text-center shadow-sm">
+            <p class="mt-3">Tu huella anual es de:</p>
+            <h1 id="total-ton" class="fw-bold">0.00</h1>
+            <p>toneladas de CO₂</p>
+            <div class="progress mb-3 mx-4">
+                <div id="barra-color" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"></div>
+            </div>
+            <p id="mensaje-personalizado" class="p-2 rounded mx-4 fw-bold"></p>
+            <button class="btn btn-outline-success mb-4" onclick="location.reload()">Volver a calcular</button>
+            <a href="index.html" class="btn btn-primary">
+                    Ir al Inicio
+                </a>
+        </div>
+    </div>
+</div>
+
+
+<script src="scripts.js"></script>
+</body>
+</html>
