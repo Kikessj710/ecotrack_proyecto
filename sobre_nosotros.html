@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobre Nosotros — EcoTrack</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+
+  <!-- ✅ Estilos globales de Sandro (colores, fuente, navbar, cards, footer) -->
+  <link rel="stylesheet" href="styles.css"/>
+
+  <!-- Estilos exclusivos de esta página -->
+  <style>
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--verde-bosque) 0%, var(--verde-medio) 60%, #3da15a 100%);
+      color: #fff;
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 6px 20px;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+      color: #fff;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      opacity: .9;
+      max-width: 560px;
+    }
+    .hero-leaf {
+      font-size: 9rem;
+      opacity: .12;
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%) rotate(-20deg);
+      user-select: none;
+    }
+
+    /* ── SECCIONES ── */
+    section { padding: 80px 0; }
+
+    .section-label {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--verde-medio);
+      margin-bottom: .6rem;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--verde-bosque);
+      margin-bottom: 1rem;
+    }
+    .section-divider {
+      width: 50px;
+      height: 4px;
+      background: var(--verde-medio);
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── MISIÓN / VISIÓN / PROPÓSITO ── */
+    .mvv-section { background: var(--verde-claro); }
+
+    .mvv-card {
+      padding: 2.5rem 2rem;
+      height: 100%;
+      border-top: 4px solid var(--verde-bosque) !important;
+    }
+    .mvv-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--verde-claro);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+      color: var(--verde-bosque);
+    }
+    .mvv-card h3 { font-size: 1.2rem; margin-bottom: .7rem; }
+    .mvv-card p  { font-size: .95rem; line-height: 1.7; color: #555; }
+
+    /* ── VALORES ── */
+    .valores-section { background: #fff; }
+
+    .valor-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.4rem;
+      border-radius: 12px;
+      background: var(--verde-claro);
+      margin-bottom: 1rem;
+      transition: background .2s;
+    }
+    .valor-item:hover { background: #daf0e3; }
+    .valor-icon { font-size: 1.5rem; color: var(--verde-bosque); flex-shrink: 0; margin-top: 2px; }
+    .valor-item h5 { font-weight: 700; color: var(--verde-bosque); margin-bottom: .2rem; font-size: 1rem; }
+    .valor-item p  { font-size: .88rem; color: #555; margin: 0; line-height: 1.6; }
+
+    /* ── ESTADÍSTICAS ── */
+    .stats-section { background: var(--verde-bosque); color: #fff; padding: 60px 0; }
+    .stat-box { text-align: center; padding: 1rem; }
+    .stat-box .number { font-size: 2.8rem; font-weight: 800; line-height: 1; color: #6FCF97; }
+    .stat-box .label  { font-size: .95rem; font-weight: 300; opacity: .85; margin-top: .4rem; }
+
+    /* ── EQUIPO ── */
+    .equipo-section { background: var(--gris-claro); }
+
+    .team-card { padding: 2rem 1.5rem; text-align: center; height: 100%; }
+    .avatar {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      border: 4px solid var(--verde-claro);
+      margin: 0 auto 1rem; display: block;
+      background: var(--verde-claro);
+      font-size: 2.8rem; line-height: 90px; text-align: center;
+    }
+    .team-card .role {
+      font-size: .8rem; font-weight: 600;
+      color: var(--verde-medio);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: .7rem;
+    }
+    .team-card p { font-size: .88rem; color: #666; line-height: 1.6; }
+    .team-social a { color: var(--verde-bosque); margin: 0 4px; font-size: 1.1rem; transition: color .2s; }
+    .team-social a:hover { color: var(--verde-medio); }
+
+    /* ── LÍNEA DE TIEMPO ── */
+    .timeline-section { background: var(--verde-claro); }
+
+    .timeline { position: relative; padding: 0; list-style: none; }
+    .timeline::before {
+      content: ''; position: absolute;
+      left: 50%; top: 0; bottom: 0;
+      width: 3px; background: var(--verde-bosque);
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      display: flex; justify-content: flex-end;
+      padding-right: calc(50% + 40px);
+      margin-bottom: 3rem; position: relative;
+    }
+    .timeline-item.right { justify-content: flex-start; padding-right: 0; padding-left: calc(50% + 40px); }
+    .timeline-dot {
+      position: absolute; left: 50%; top: 16px;
+      transform: translateX(-50%);
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--verde-bosque);
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 3px var(--verde-medio);
+      z-index: 1;
+    }
+    .timeline-content {
+      background: #fff; border-radius: 14px;
+      padding: 1.4rem 1.6rem;
+      box-shadow: 0 4px 16px rgba(26,92,46,.1);
+      max-width: 340px;
+    }
+    .timeline-year { font-size: .75rem; font-weight: 700; color: var(--verde-medio); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: .3rem; }
+    .timeline-content h5 { font-weight: 700; color: var(--verde-bosque); margin-bottom: .4rem; font-size: 1rem; }
+    .timeline-content p  { font-size: .88rem; color: #555; line-height: 1.6; margin: 0; }
+
+    @media (max-width: 768px) {
+      .timeline::before { left: 20px; }
+      .timeline-item,
+      .timeline-item.right { justify-content: flex-start; padding-left: 56px; padding-right: 0; }
+      .timeline-dot { left: 20px; }
+      .timeline-content { max-width: 100%; }
+    }
+
+    /* ── ANIMACIONES ── */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════
+       NAVBAR
+  ══════════════════════════════ -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">🌿 EcoTrack</a>
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-2">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="calculadora.html">Calculadora</a></li>
+          <li class="nav-item"><a class="nav-link" href="tips.html">Tips</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link active fw-bold" href="sobre-nosotros.html">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════
+       HERO
+  ══════════════════════════════ -->
+<section class="hero">
+  <div class="container position-relative">
+    <div class="hero-badge">🌍 Sobre EcoTrack</div>
+    <h1 class="text-gris-oscuro">Comprometidos con<br/>el planeta que habitamos</h1>
+    <p class="text-gris-oscuro">Somos un equipo apasionado por el medio ambiente y la tecnología. Creemos que la información es el primer paso para el cambio.</p>
+  </div>
+  <div class="hero-leaf">🌿</div>
+</section>
+
+  <!-- ══════════════════════════════
+       MISIÓN, VISIÓN Y PROPÓSITO
+  ══════════════════════════════ -->
+  <section class="mvv-section">
+    <div class="container">
+      <div class="text-center mb-5 fade-in">
+        <div class="section-label">Quiénes somos</div>
+        <h2 class="section-title">Misión, Visión y Propósito</h2>
+        <div class="section-divider mx-auto"></div>
+      </div>
+      <div class="row g-4">
+
+        <div class="col-md-4 fade-in">
+          <div class="card mvv-card">
+            <div class="mvv-icon"><i class="bi bi-bullseye"></i></div>
+            <h3>Nuestra Misión</h3>
+            <p>Concientizar a las personas sobre el impacto ambiental de sus hábitos diarios mediante herramientas visuales, accesibles y gratuitas que inspiren el cambio desde la información.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 fade-in">
+          <div class="card mvv-card">
+            <div class="mvv-icon"><i class="bi bi-eye"></i></div>
+            <h3>Nuestra Visión</h3>
+            <p>Ser la plataforma de referencia para la medición y reducción de la huella de carbono personal, contribuyendo a un futuro donde cada persona tome decisiones informadas por el planeta.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 fade-in">
+          <div class="card mvv-card">
+            <div class="mvv-icon"><i class="bi bi-heart"></i></div>
+            <h3>Nuestro Propósito</h3>
+            <p>Transformar datos complejos sobre emisiones de CO₂ en información comprensible y motivadora, para que cualquier persona pueda actuar a favor del ambiente sin importar su nivel técnico.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       VALORES
+  ══════════════════════════════ -->
+  <section class="valores-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+
+        <div class="col-lg-5 fade-in">
+          <div class="section-label">Lo que nos mueve</div>
+          <h2 class="section-title">Nuestros Valores</h2>
+          <div class="section-divider"></div>
+          <p style="color:#555; line-height:1.8;">Cada decisión que tomamos como equipo está guiada por principios que reflejan nuestra relación con el planeta y con las personas que lo habitan.</p>
+        </div>
+
+        <div class="col-lg-7 fade-in">
+          <div class="valor-item">
+            <div class="valor-icon"><i class="bi bi-tree"></i></div>
+            <div>
+              <h5>Sostenibilidad</h5>
+              <p>Diseñamos pensando en el largo plazo. Cada funcionalidad existe para promover hábitos que el planeta pueda sostener.</p>
+            </div>
+          </div>
+          <div class="valor-item">
+            <div class="valor-icon"><i class="bi bi-shield-check"></i></div>
+            <div>
+              <h5>Transparencia</h5>
+              <p>Mostramos cómo calculamos cada dato. Sin algoritmos ocultos, sin información distorsionada.</p>
+            </div>
+          </div>
+          <div class="valor-item">
+            <div class="valor-icon"><i class="bi bi-people"></i></div>
+            <div>
+              <h5>Accesibilidad</h5>
+              <p>La información ambiental debe llegar a todos. EcoTrack es y siempre será gratuita y fácil de usar.</p>
+            </div>
+          </div>
+          <div class="valor-item">
+            <div class="valor-icon"><i class="bi bi-lightbulb"></i></div>
+            <div>
+              <h5>Educación</h5>
+              <p>No basta con mostrar un número. Explicamos el "por qué" detrás de cada hábito contaminante.</p>
+            </div>
+          </div>
+          <div class="valor-item">
+            <div class="valor-icon"><i class="bi bi-arrow-repeat"></i></div>
+            <div>
+              <h5>Mejora Continua</h5>
+              <p>Escuchamos a nuestra comunidad y evolucionamos constantemente para ser más útiles y precisos.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- ══════════════════════════════
+       EQUIPO
+  ══════════════════════════════ -->
+  <section class="equipo-section">
+    <div class="container">
+      <div class="text-center mb-5 fade-in">
+        <div class="section-label">Las personas detrás</div>
+        <h2 class="section-title">Nuestro Equipo</h2>
+        <div class="section-divider mx-auto"></div>
+        <p class="text-muted" style="max-width:520px; margin:0 auto;">Un grupo diverso de estudiantes apasionados por la tecnología y el cuidado del medio ambiente.</p>
+      </div>
+      <div class="row g-4 justify-content-center">
+
+        <div class="col-sm-6 col-lg-4 fade-in">
+          <div class="card team-card">
+            <div class="avatar">👨‍💻</div>
+            <h5>Enrique Zambrano</h5>
+            <div class="role">Líder / DevOps</div>
+            <p>Arquitecto del repositorio y el flujo GitFlow. Se asegura de que cada línea de código llegue a producción de forma ordenada.</p>
+            <div class="team-social mt-3">
+              <a href="#"><i class="bi bi-github"></i></a>
+              <a href="#"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4 fade-in">
+          <div class="card team-card">
+            <div class="avatar">👨‍🔬</div>
+            <h5>Alan Peñaloza</h5>
+            <div class="role">Desarrollador JavaScript</div>
+            <p>Cerebro detrás de la calculadora de huella de carbono. Convierte fórmulas complejas en sliders y resultados visuales claros.</p>
+            <div class="team-social mt-3">
+              <a href="#"><i class="bi bi-github"></i></a>
+              <a href="#"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4 fade-in">
+          <div class="card team-card">
+            <div class="avatar">🎨</div>
+            <h5>Sandro Fernández</h5>
+            <div class="role">Diseñador UI</div>
+            <p>Define la identidad visual de EcoTrack. Cada color, tipografía y componente pasa por su criterio antes de llegar al usuario.</p>
+            <div class="team-social mt-3">
+              <a href="#"><i class="bi bi-github"></i></a>
+              <a href="#"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4 fade-in">
+          <div class="card team-card">
+            <div class="avatar">✍️</div>
+            <h5>Korayma Pico</h5>
+            <div class="role">Redactora / Documentación</div>
+            <p>Voz y alma del contenido de EcoTrack. Da vida a esta página y cuida que el repositorio esté correctamente documentado.</p>
+            <div class="team-social mt-3">
+              <a href="#"><i class="bi bi-github"></i></a>
+              <a href="#"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4 fade-in">
+          <div class="card team-card">
+            <div class="avatar">📝</div>
+            <h5>Shantall Aguirre</h5>
+            <div class="role">Contenido / Blog</div>
+            <p>Investiga y escribe los artículos del blog ambiental. Su contenido convierte datos científicos en lecturas accesibles para todos.</p>
+            <div class="team-social mt-3">
+              <a href="#"><i class="bi bi-github"></i></a>
+              <a href="#"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4 fade-in">
+          <div class="card team-card">
+            <div class="avatar">🔧</div>
+            <h5>Robert Montesdeoca</h5>
+            <div class="role">Integraciones / Release</div>
+            <p>Responsable del formulario de contacto, el footer y de gestionar la release final. El que une todas las piezas del proyecto.</p>
+            <div class="team-social mt-3">
+              <a href="#"><i class="bi bi-github"></i></a>
+              <a href="#"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+ 
+
+  <!-- ══════════════════════════════
+       FOOTER
+  ══════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="row mb-3">
+        <div class="col-md-4 mb-3 mb-md-0">
+          <h5>🌿 EcoTrack</h5>
+          <p>Plataforma de Conciencia Ambiental. Mide, entiende y reduce tu huella de carbono.</p>
+        </div>
+        <div class="col-md-4 mb-3 mb-md-0">
+          <h5>Navegación</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="calculadora.html">Calculadora CO₂</a></li>
+            <li><a href="tips.html">Tips Ecológicos</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5>Universidad</h5>
+          <p>Universidad Técnica de Ambato<br/>Manejo y Configuración de Software<br/>2026</p>
+        </div>
+      </div>
+      <hr/>
+      <p class="footer-copyright">© 2026 EcoTrack — Hecho con 💚 por Enrique · Alan · Sandro · Korayma · Shantall · Robert</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Animación fade-in al hacer scroll -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
