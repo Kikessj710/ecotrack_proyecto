@@ -128,3 +128,4 @@ Universidad Tecnica de Ambato
 Facultad de Ingenieria en Sistemas, Electronica e Industrial
 Carrera de Software
 Manejo y Configiracion de Software - Primer Parcial 2026
+# Hotfix prueba flujo GitFlow
